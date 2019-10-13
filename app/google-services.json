@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "668372608656",
+    "firebase_url": "https://game-of-wastes.firebaseio.com",
+    "project_id": "game-of-wastes",
+    "storage_bucket": "game-of-wastes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668372608656:android:7424ad9c440c0d0710da15",
+        "android_client_info": {
+          "package_name": "com.sj.gameofwastes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668372608656-8ipn10hdrvn9etk4crkjp7mh05sffshn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sj.gameofwastes",
+            "certificate_hash": "3c88d3b30ff3a614829de7e64dc0284286e3e728"
+          }
+        },
+        {
+          "client_id": "668372608656-f9878no5gmtcsu80na8eihiq8mu2a825.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEyQ1CY6XPHmTkNhrOzjEvVBFKD7BzTJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668372608656-f9878no5gmtcsu80na8eihiq8mu2a825.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
