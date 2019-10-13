@@ -16,15 +16,22 @@ Properly disposing plastic waste to nearby shopkeepers
 (Involves Image processing to detect if the image is of waste only and QR code for user identification)
 Users with maximum tokens can see themselves as the conquerers on the map.
 
-Themes used:
+# Themes used:
+
 Gamification
+
 Crowd Sourcing
+
 Image Processing
+
 Principles of sharing economy
+
 
 Users Of Game of waste:
 1.Garbage host: One who keeps the garbage collection bin, to whom users approach and thus distribute tokens to users.
+
 2.End user: dispose of plastic to hosts
+
 3. Municipal Corporation: Distribute tokens to hosts and users for crowdsourcing and maintain leaderboard according to numbers of tokens collected by users
 
 
