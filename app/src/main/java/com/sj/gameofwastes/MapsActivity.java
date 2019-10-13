@@ -120,7 +120,7 @@ public class MapsActivity extends FragmentActivity
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         mMap = googleMap;
@@ -161,9 +161,40 @@ public class MapsActivity extends FragmentActivity
 // Store a data object with the polygon, used here to indicate an arbitrary type.
         polygon1.setTag("alpha");
 
+        db.collection("territory")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+
+
+                                double lati=Double.parseDouble(document.get("Lattitude").toString());
+                                double longi=Double.parseDouble(document.get("Longitude").toString());
+                                double width = 0.003;
+                                Polygon polygon1 = googleMap.addPolygon(new PolygonOptions()
+                                        .clickable(true)
+                                        .add(
+                                                new LatLng(lati-width,longi-width),
+                                                new LatLng(lati-width,longi+width),
+                                                new LatLng(lati+width,longi+width),
+                                                new LatLng(lati+width, longi-width)));
+// Store a data object with the polygon, used here to indicate an arbitrary type.
+                                polygon1.setTag("alpha");
+                            }
+                        } else {
+                            Log.d("asd", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+
         // Position the map's camera near Alice Springs in the center of Australia,
         // and set the zoom factor so most of Australia shows on the screen.
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(19.1032546, 72.8365929), 12));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(19.1032546, 72.8365929), 15));
 
         // Set listeners for click events.
         googleMap.setOnPolylineClickListener(MapsActivity.this);
