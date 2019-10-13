@@ -14,21 +14,34 @@ The application involves crowdsourcing in the following way:
 Users detect illegal dump
 Properly disposing plastic waste to nearby shopkeepers
 (Involves Image processing to detect if the image is of waste only and QR code for user identification)
-User with maximum tokens can see themselves as the conquerers on the map.
+Users with maximum tokens can see themselves as the conquerers on the map.
 
-We have implemented two app
+Themes used:
+Gamification
+Crowd Sourcing
+Image Processing
+Principles of sharing economy
 
-1.Game Of Waste:
-Three users can sign in:
+Users Of Game of waste:
+1.Garbage host: One who keeps the garbage collection bin, to whom users approach and thus distribute tokens to users.
+2.End user: dispose of plastic to hosts
+3. Municipal Corporation: Distribute tokens to hosts and users for crowdsourcing and maintain leaderboard according to numbers of tokens collected by users
 
-Garbage host
 
-Users
 
-Municipal Corporation(To view images uploaded by users and distribute tokens)
+## Unique Selliing Points:
+Involves gamification and thus waste management implicitly
+Plastic waste can be reduced to a high extent
+Plastic management has been focused
+QR code has been used for user identification
+The map has been used to show the territories
+Image processing has been used to detect illegal dumps, problem for which a lot of applications do not focus on
 
-Detection of illegal dumps and disposal of plastic waste properly to garbage host
-Garbage host can verify the dump using the Garbage detector too.
+## Future Scope :
 
-2. Garbage Detecter: Used to verify image is a garbage image or not using image processing.
-The tokens can be used at different places.
+A global leaderboard can be maintained for all the users
+The tokens can be exchanged for various other commodities 
+The apps can be merged to provide a single platform
+Blockchain can be used to maintain the supply management of tokens improving transparency
+The kings of the territory would be plotted on the map thus improving ui.
+
