@@ -1,14 +1,35 @@
 package com.sj.gameofwastes;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -20,7 +41,9 @@ public class MapsActivity extends FragmentActivity
         GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
             OnMapReadyCallback,
-            ActivityCompat.OnRequestPermissionsResultCallback {
+            ActivityCompat.OnRequestPermissionsResultCallback,
+        GoogleMap.OnPolylineClickListener,
+        GoogleMap.OnPolygonClickListener{
 
     /**
      * Request code for location permission request.
@@ -37,14 +60,53 @@ public class MapsActivity extends FragmentActivity
 
     private GoogleMap mMap;
 
+    //Buttons
+    private Button qr;
+    private Button capture;
+    private Button scan;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        qr = (Button) findViewById(R.id.QR);
+        capture = (Button) findViewById(R.id.Capture);
+        scan = (Button) findViewById(R.id.Scan);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.location_map);
         mapFragment.getMapAsync(this);
+
+
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, showQR.class);
+                startActivity(intent);
+            }
+        });
+
+        capture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, capture_pic.class);
+                startActivity(intent);
+            }
+        });
+
+        scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, scanme.class);
+                startActivity(intent);
+            }
+
+        });
+
+
     }
 
 
@@ -59,10 +121,45 @@ public class MapsActivity extends FragmentActivity
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         mMap = googleMap;
 
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
+
+        DocumentReference user = db.collection("territory").document("t1");
+        user.get().addOnCompleteListener(new OnCompleteListener <DocumentSnapshot> () {
+            @Override
+            public void onComplete(@NonNull Task < DocumentSnapshot > task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    StringBuilder fields = new StringBuilder("");
+                    fields.append("Longitude: ").append(doc.get("Longitude"));
+                    fields.append("\nLattitude: ").append(doc.get("Lattitude"));
+
+
+                    fields.append("\nName: ").append(doc.get("Name"));
+                    Toast.makeText(MapsActivity.this," Show "+fields, Toast.LENGTH_SHORT).show();
+                    Log.e("asd"," Show "+fields);
+                }
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+
+
+
+        // Position the map's camera near Alice Springs in the center of Australia,
+        // and set the zoom factor so most of Australia shows on the screen.
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(19.1032546, 72.8365929), 12));
+
+        // Set listeners for click events.
+        googleMap.setOnPolylineClickListener(MapsActivity.this);
+        googleMap.setOnPolygonClickListener(MapsActivity.this);
         enableMyLocation();
     }
 
@@ -129,4 +226,13 @@ public class MapsActivity extends FragmentActivity
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
 
+    @Override
+    public void onPolygonClick(Polygon polygon) {
+
+    }
+
+    @Override
+    public void onPolylineClick(Polyline polyline) {
+
+    }
 }

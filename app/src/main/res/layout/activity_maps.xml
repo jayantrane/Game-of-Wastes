@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity" />
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/location_map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/QR"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/Capture"
+        android:layout_alignRight="@id/Capture"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="-131dp"
+        android:layout_marginBottom="2dp"
+        android:background="#9EABE9"
+        android:padding="8dp"
+        android:text="QR"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/Capture"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#9EABE9"
+        android:padding="8dp"
+        android:text="Capture"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/Scan"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#9EABE9"
+        android:padding="8dp"
+        android:text="Scan"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>
