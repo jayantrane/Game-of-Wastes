@@ -19,14 +19,14 @@
         android:layout_alignStart="@id/Capture"
         android:layout_alignRight="@id/Capture"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="131dp"
+        android:layout_marginStart="157dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginRight="-131dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginRight="-157dp"
+        android:layout_marginBottom="3dp"
         android:background="#9EABE9"
         android:padding="8dp"
-        android:text="QR"
+        android:text="Get My QR"
         android:textColor="#ffffff" />
 
     <Button

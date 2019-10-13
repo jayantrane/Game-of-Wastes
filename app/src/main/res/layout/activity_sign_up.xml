@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
+    <TextView
+        android:id="@+id/textvieww"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You are?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/radiogroup"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.136" />
+
     <RadioGroup
         android:id="@+id/radiogroup"
         android:layout_width="151dp"
@@ -45,8 +57,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="PLease enter Name"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,9 +72,10 @@
         android:text="Get My Location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namebox"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <Button
         android:id="@+id/submitbox"
@@ -71,10 +84,10 @@
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintVertical_bias="0.789" />
 
     <TextView
         android:id="@+id/addressdisplay"
@@ -84,6 +97,19 @@
         app:layout_constraintBottom_toTopOf="@+id/submitbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressbox" />
+        app:layout_constraintTop_toBottomOf="@+id/addressbox"
+        app:layout_constraintVertical_bias="0.37" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addressbox"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textvieww"
+        app:layout_constraintVertical_bias="0.364" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,6 +42,9 @@ public class scanme extends AppCompatActivity  {
 //                tv_qr_readTxt.setText(result.getContents());
   //              Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(scanme.this, scan_info.class);
+                intent.putExtra("CONTENT", result.getContents());
+                startActivity(intent);
             }
         } else {
             // This is important, otherwise the result will not be passed to the fragment
