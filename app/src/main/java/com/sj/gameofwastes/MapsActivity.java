@@ -151,7 +151,15 @@ public class MapsActivity extends FragmentActivity
                     }
                 });
 
-
+        Polygon polygon1 = googleMap.addPolygon(new PolygonOptions()
+                .clickable(true)
+                .add(
+                        new LatLng(-27.457, 153.040),
+                        new LatLng(-33.852, 151.211),
+                        new LatLng(-37.813, 144.962),
+                        new LatLng(-34.928, 138.599)));
+// Store a data object with the polygon, used here to indicate an arbitrary type.
+        polygon1.setTag("alpha");
 
         // Position the map's camera near Alice Springs in the center of Australia,
         // and set the zoom factor so most of Australia shows on the screen.
