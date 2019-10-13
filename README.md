@@ -16,7 +16,7 @@ Properly disposing plastic waste to nearby shopkeepers
 (Involves Image processing to detect if the image is of waste only and QR code for user identification)
 Users with maximum tokens can see themselves as the conquerers on the map.
 
-# Themes used:
+## Themes used:
 
 Gamification
 
